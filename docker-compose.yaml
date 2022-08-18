@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  backend:
+    container_name: backend
+    build: backend.Dockerfile
+  
+  frontend:
+    depends_on:
+      - backend
+    container_name: frontend
+    build: frontend.Dockerfile
