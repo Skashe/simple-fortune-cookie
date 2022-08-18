@@ -1,15 +1,17 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
+   runs-on: ubuntu-latest
 
-  name: Deployment
 
-  on:
+name: Deployment
+
+on:
   push:
-    branches:
+  branches:
       - main
 
-  jobs:
+jobs:
   deployment:
     runs-on: ubuntu-latest
     environment: 
