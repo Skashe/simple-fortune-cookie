@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Go-App
+spec:
+  containers:
+  - name: Fortune-Cookie
+    image: simpleFortuneCookie
+    command:
+      - sh  
+      - backend/gorunbackend.sh
+      - frontend/gorunfront.sh
