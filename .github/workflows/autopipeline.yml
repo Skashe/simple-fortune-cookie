@@ -11,7 +11,7 @@ jobs:
       - name: Upload repository
         uses: actions/upload-artifact@v2
         with:
-          name: basic code
+          name: code
           path: .
   Testing:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
       - name: Download repository
         uses: actions/download-artifact@v2
         with:
-          name: basic code
+          name: code
           path: .
       - name: Testing
         run: chmod +x frontend/gotest.sh && frontend/gotest.sh
