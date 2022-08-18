@@ -9,7 +9,7 @@ jobs:
     branches:
       - main
 
-jobs:
+  jobs:
   deployment:
     runs-on: ubuntu-latest
     environment: 
@@ -21,7 +21,7 @@ jobs:
 
 name: staging 
 
-  on:
+on:
   push:
     branches:
       - main
@@ -38,7 +38,7 @@ jobs:
 
 name: production
 
-  on:
+on:
   push:
     branches:
       - main
