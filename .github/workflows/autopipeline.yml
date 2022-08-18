@@ -11,15 +11,16 @@ jobs:
       - name: Upload repository
         uses: actions/upload-artifact@v2
         with:
-          name: code
+          name: basic_code
           path: .
   Testing:
+    needs: Clone-down
     runs-on: ubuntu-latest
     steps:
       - name: Download repository
         uses: actions/download-artifact@v2
         with:
-          name: code
+          name: basic_code
           path: .
       - name: Testing
         run: chmod +x frontend/gotest.sh && frontend/gotest.sh
