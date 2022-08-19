@@ -3,7 +3,12 @@ version: '3'
 services:
 
   backend:
+    depends_on:
+      - db
     container_name: backend
+    environment:
+      - REDIS_DNS=db
+      - REDIS_PORT=6379
     ports:
       - 9000:9000
     build:
@@ -21,3 +26,11 @@ services:
       - 8080:8080
     build:
       context: frontend
+
+
+  db:
+    ports:
+      - "6379:6379"
+  
+    image: redis:6.2-alpine
+    restart: always
