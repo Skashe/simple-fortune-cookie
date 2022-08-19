@@ -16,7 +16,7 @@ jobs:
       - name: Upload repository
         uses: actions/upload-artifact@v2
         with:
-          name: basic_code
+          name: code
           path: .
 
   Docker-image:
@@ -25,7 +25,7 @@ jobs:
       - name: Download repo
         uses: actions/download-artifact@v2
         with:
-          name: basic_code
+          name: code
           path: .
       - name: build docker
         run: chmod +x ci/build-docker.sh && ci/build-docker.sh
@@ -36,7 +36,7 @@ jobs:
       - name: Upload Repo
         uses: actions/upload-artifact@v2
         with:
-          name: basic_code
+          name: code
           path: .
 
   Testing:
@@ -46,7 +46,7 @@ jobs:
       - name: Download repository
         uses: actions/download-artifact@v2
         with:
-          name: basic_code
+          name: code
           path: .
       - name: Testing
         run: chmod +x frontend/gotest.sh && frontend/gotest.sh
