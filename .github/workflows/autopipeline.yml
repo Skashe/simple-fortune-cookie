@@ -1,5 +1,9 @@
 name: JavaCI
-on: push
+on:
+  push:
+    branches:
+      - main
+      - cd
 #remove comments to create env-variable
 #env
 jobs:
