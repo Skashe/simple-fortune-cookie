@@ -1,3 +1,8 @@
+env:
+  docker_username: ${{ secrets.DOCKER_USERNAME }}
+  docker_password: ${{ secrets.DOCKER_PASSWORD }}
+  GIT_COMMIT: stuff
+
 name: JavaCI
 on: push
 #remove comments to create env-variable
@@ -13,6 +18,27 @@ jobs:
         with:
           name: basic_code
           path: .
+
+  Docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download repo
+        uses: actions/download-artifact@v2
+        with:
+          name: basic_code
+          path: .
+      - name: build docker
+        run: chmod +x ci/build-docker.sh && ci/build-docker.sh
+
+      - name: push docker
+        run: chmod +x ci/push-docker.sh && ci/push-docker.sh
+
+      - name: Upload Repo
+        uses: actions/upload-artifact@v2
+        with:
+          name: basic_code
+          path: .
+
   Testing:
     needs: Clone-down
     runs-on: ubuntu-latest
