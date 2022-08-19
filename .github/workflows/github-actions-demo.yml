@@ -18,7 +18,7 @@ jobs:
       name: production
       url: https://github.com
     steps:
-      - name: deploy
+      - name: deployment
         # ...deployment-specific steps
 
 name: staging 
