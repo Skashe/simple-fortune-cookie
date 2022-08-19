@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  backend:
+    container_name: backend
+    ports:
+      - 9000:9000
+    build:
+      context: backend
+ 
+
+  frontend:
+    depends_on:
+      - backend
+    container_name: frontend
+    environment:
+      - BACKEND_DNS=backend
+      - BACKEND_PORT=9000
+    ports:
+      - 8080:8080
+    build:
+      context: frontend
